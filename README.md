@@ -7,7 +7,8 @@ An interactive Pythagorean theorem simulator built with **React**, **TypeScript*
 - **Draggable right triangle** – drag vertex **A** to change side *b*, vertex **B** to change side *a*, or the
   right-angle vertex **C** to swing it around the hypotenuse along its Thales circle. The angle at C is
   always exactly 90°. Vertices are also keyboard-accessible (arrow keys, Shift for bigger steps).
-- **Sliders** for sides *a* and *b* (1–15, 0.01 precision) plus ± nudge buttons.
+- **Sliders** for sides *a* and *b* (1–15, 0.01 precision), ± nudge buttons, and editable number boxes
+  (type a value and press Enter; out-of-range values are capped, invalid text is rejected).
 - **Live formula** – `a² + b² = c²` with the substituted numbers, the squared values and `c = √…`.
 - **Squares on every side** (toggleable), with an optional unit grid so students can count cells (9 + 16 = 25).
 - **Animated proof** – Euclid's shear → rotate → shear argument (Elements I.47) morphs the two leg squares
