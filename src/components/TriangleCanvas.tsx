@@ -198,7 +198,7 @@ export function TriangleCanvas({ state, onChange, onInteract, showSquares, showU
             <text
               textAnchor="middle"
               y={sidePx > 70 ? -fs * 0.25 : fs * 0.35}
-              className="font-display"
+              className="font-math"
               fontWeight={800}
               fontSize={fs * 1.15}
               fill={color}
@@ -234,7 +234,7 @@ export function TriangleCanvas({ state, onChange, onInteract, showSquares, showU
           style={{ filter: 'drop-shadow(0 6px 12px rgba(35,47,91,0.12))' }}
         />
         {sidePx > 40 && (
-          <text x={c.x} y={c.y + fs * 0.35} textAnchor="middle" fontSize={fs * 1.1} fontWeight={800} fill="#fff" className="font-display">
+          <text x={c.x} y={c.y + fs * 0.35} textAnchor="middle" fontSize={fs * 1.1} fontWeight={800} fill="#fff" className="font-math">
             {key}²
           </text>
         )}
@@ -280,7 +280,7 @@ export function TriangleCanvas({ state, onChange, onInteract, showSquares, showU
     const ly = s.y - away.y * 24;
     return (
       <g key={id}>
-        <text x={lx} y={ly + 5} textAnchor="middle" fontSize={14} fontWeight={700} fill={COLORS.ink} fillOpacity={0.55} className="font-display" pointerEvents="none">
+        <text x={lx} y={ly + 5} textAnchor="middle" fontSize={14} fontWeight={700} fill={COLORS.ink} fillOpacity={0.55} className="font-math" pointerEvents="none">
           {id}
         </text>
         <g
@@ -429,7 +429,7 @@ export function TriangleCanvas({ state, onChange, onInteract, showSquares, showU
         <div className="pointer-events-none absolute inset-x-0 top-3 flex justify-center px-3">
           <div
             key={caption}
-            className="animate-fade-in max-w-full rounded-lg bg-navy px-4 py-2 text-center font-display text-xs font-semibold tracking-wide text-white shadow-lift sm:text-sm"
+            className="animate-fade-in max-w-full rounded-lg bg-navy px-4 py-2 text-center font-math text-xs font-semibold tracking-wide text-white shadow-lift sm:text-sm"
           >
             {caption}
           </div>

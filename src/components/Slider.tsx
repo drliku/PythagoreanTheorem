@@ -21,14 +21,14 @@ export function Slider({ id, label, symbol, value, min, max, step, color, onChan
   return (
     <div>
       <div className="mb-1.5 flex items-center justify-between">
-        <label htmlFor={id} className="flex items-center gap-2 font-display text-sm font-bold uppercase tracking-wide text-navy">
+        <label htmlFor={id} className="flex items-center gap-2 font-display text-[16px] font-bold uppercase tracking-wide text-navy">
           <span
             className="grid h-6 w-6 place-items-center rounded-lg font-display text-sm font-extrabold text-white"
             style={{ backgroundColor: color }}
           >
-            <span className="normal-case">{symbol}</span>
+            <span className="font-math normal-case">{symbol}</span>
           </span>
-          {label} <span className="normal-case">{symbol}</span>
+          {label} <span className="font-math normal-case">{symbol}</span>
         </label>
         <div className="flex items-center gap-1">
           <button

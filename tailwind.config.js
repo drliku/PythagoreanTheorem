@@ -7,6 +7,8 @@ export default {
         // "Brain" is used when installed; any glyph it lacks falls back per-character.
         sans: ['Saira', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         display: ['Brain', '"Saira Semi Condensed"', 'Saira', 'ui-sans-serif', 'sans-serif'],
+        // Brain is caps-only, so math (a, b, c) uses Saira to keep variables lowercase.
+        math: ['"Saira Semi Condensed"', 'Saira', 'ui-sans-serif', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       colors: {

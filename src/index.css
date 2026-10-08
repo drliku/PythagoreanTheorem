@@ -1,16 +1,17 @@
 /*
- * "Brain" is picked up from the visitor's installed fonts. To ship it with the
- * site instead, drop the file in public/fonts/ and it is loaded from there.
- * Characters Brain doesn't have (², √, ≈, digits…) fall back to Saira glyph-by-glyph.
+ * Brain (The Brain Maze display face) is bundled from src/assets/fonts.
+ * It is caps-only and lacks symbols such as + = ² √ ≈, which the browser
+ * fills in glyph-by-glyph from Saira Semi Condensed (next in the stack).
  */
 @font-face {
   font-family: 'Brain';
   src:
+    url('./assets/fonts/Brain.woff2') format('woff2'),
     local('Brain'),
-    local('Brain Regular'),
-    local('Brain-Regular'),
-    url('/fonts/Brain.woff2') format('woff2'),
-    url('/fonts/Brain.ttf') format('truetype');
+    local('Brain Regular');
+  /* Single weight: claim the full range so browsers don't fake bold. */
+  font-weight: 100 900;
+  font-style: normal;
   font-display: swap;
 }
 
@@ -39,13 +40,13 @@
     @apply rounded-3xl border border-slate-200 bg-white shadow-soft;
   }
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 font-display text-sm font-bold uppercase tracking-wide transition duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 font-display text-[16px] font-bold uppercase tracking-wide transition duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-50;
   }
   .btn-primary {
     @apply btn bg-coral text-white shadow-lift hover:bg-coral-600 focus-visible:ring-coral-200;
   }
   .section-title {
-    @apply flex items-center gap-3 font-display text-base font-bold uppercase tracking-wide text-coral;
+    @apply flex items-center gap-3 font-display text-xl font-bold uppercase tracking-wide text-coral;
   }
   .section-title::before {
     content: '';

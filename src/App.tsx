@@ -127,17 +127,17 @@ export default function App() {
         {/* Wordmark laid out like The Brain Maze logo: big word, rule + word, coral icon block */}
         <div className="flex items-stretch gap-3 sm:gap-4">
           <div className="flex flex-col justify-center leading-none">
-            <h1 className="font-display text-[28px] font-extrabold uppercase leading-[0.9] tracking-wide text-coral sm:text-[44px]">
+            <h1 className="font-display text-[36px] font-extrabold uppercase leading-[0.9] tracking-wide text-coral sm:text-[58px]">
               Pythagorean
             </h1>
             <div className="mt-1 flex items-center gap-2 sm:gap-3">
               <span className="h-[3px] flex-1 bg-coral sm:h-1" />
-              <span className="font-display text-[28px] font-extrabold uppercase leading-[0.9] tracking-wide text-coral sm:text-[44px]">
+              <span className="font-display text-[36px] font-extrabold uppercase leading-[0.9] tracking-wide text-coral sm:text-[58px]">
                 Lab
               </span>
             </div>
           </div>
-          <div className="grid aspect-square w-[60px] shrink-0 place-items-center bg-coral sm:w-[92px]">
+          <div className="grid aspect-square w-[64px] shrink-0 place-items-center bg-coral sm:w-[104px]">
             <svg viewBox="0 0 32 32" className="h-3/4 w-3/4" aria-hidden>
               <path d="M7 26 L7 7 L26 26 Z" fill="none" stroke={COLORS.ink} strokeWidth="2.8" strokeLinejoin="round" />
               <rect x="7" y="21" width="5" height="5" fill="none" stroke={COLORS.ink} strokeWidth="2" />
@@ -145,7 +145,7 @@ export default function App() {
           </div>
         </div>
         <p className="hidden max-w-sm text-right text-sm font-medium text-slate-500 md:block">
-          Experiment with right triangles and see&nbsp;why <span className="whitespace-nowrap font-display font-bold text-navy">a² + b² = c²</span>.
+          Experiment with right triangles and see&nbsp;why <span className="whitespace-nowrap font-math font-bold text-navy">a² + b² = c²</span>.
         </p>
       </header>
 
@@ -210,7 +210,7 @@ export default function App() {
                 {DEMO_PHASES.map((p, i) => (
                   <li
                     key={p.id}
-                    className={`whitespace-nowrap rounded-lg px-2.5 py-1 font-display font-bold transition-colors duration-300 ${
+                    className={`whitespace-nowrap rounded-lg px-2.5 py-1 font-math font-bold transition-colors duration-300 ${
                       demo.frame && i === demo.frame.index
                         ? 'bg-coral text-white'
                         : demo.frame && i < demo.frame.index
@@ -237,7 +237,7 @@ export default function App() {
               <Slider id="side-b" label="Side" symbol="b" value={tri.b} min={MIN_LEG} max={MAX_LEG} step={0.01} color={COLORS.b} onChange={(v) => setSide('b', v)} />
             </div>
             <div className="mt-5">
-              <p className="mb-2 font-display text-xs font-bold uppercase tracking-wider text-slate-500">Pythagorean triples</p>
+              <p className="mb-2 font-display text-[15px] font-bold uppercase tracking-wider text-slate-500">Pythagorean triples</p>
               <div className="flex flex-wrap gap-2">
                 {PRESETS.map((p) => {
                   const active = tri.a === p.a && tri.b === p.b;
@@ -268,7 +268,7 @@ export default function App() {
             <div className="overflow-hidden rounded-2xl border border-slate-100">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="bg-navy text-left font-display text-[11px] uppercase tracking-wider text-white">
+                  <tr className="bg-navy text-left font-display text-[14px] uppercase tracking-wider text-white">
                     <th className="px-3 py-2 font-medium">Side</th>
                     <th className="px-3 py-2 text-right font-medium">Length</th>
                     <th className="whitespace-nowrap px-3 py-2 text-right font-medium">Square area</th>
@@ -343,7 +343,7 @@ function PanelTitle({ children }: { children: ReactNode }) {
 function Angle({ label, value, exact }: { label: string; value: number; exact?: boolean }) {
   return (
     <div className="rounded-lg border border-slate-200 px-2 py-2">
-      <div className="font-display text-[11px] font-bold text-coral">{label}</div>
+      <div className="font-display text-[14px] font-bold text-coral">{label}</div>
       <div className="font-mono text-sm font-semibold tabular-nums text-slate-800">
         {exact ? '90' : value.toFixed(2)}°
       </div>

@@ -15,7 +15,7 @@ export function Toggle({ label, checked, onChange, description }: Props) {
       className="group flex w-full items-center justify-between gap-3 rounded-lg px-1 py-1.5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-300"
     >
       <span>
-        <span className="block font-display text-sm font-bold uppercase tracking-wide text-navy">{label}</span>
+        <span className="block font-display text-[16px] font-bold uppercase tracking-wide text-navy">{label}</span>
         {description && <span className="block text-xs text-slate-400">{description}</span>}
       </span>
       <span

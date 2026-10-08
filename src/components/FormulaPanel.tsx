@@ -38,7 +38,7 @@ export function FormulaPanel({ a, b, highlight }: Props) {
       aria-live="polite"
     >
       <div className="flex flex-col items-center gap-3 text-center">
-        <div className="font-display text-4xl font-extrabold tracking-wide text-navy sm:text-5xl">
+        <div className="font-math text-4xl font-extrabold tracking-wide text-navy sm:text-5xl">
           <Term color={COLORS.a}>a²</Term>
           <span className="mx-2 text-slate-300">+</span>
           <Term color={COLORS.b}>b²</Term>

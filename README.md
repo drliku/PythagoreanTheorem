@@ -22,6 +22,14 @@ Side lengths live on a 0.01 grid, and squares are computed in integer ten-thousa
 `a²`, `b²` and `c²` are printed exactly and the on-screen sum always matches digit for digit.
 `c` is shown exactly when it lands on the grid (e.g. 5, 13) and as `≈` a 3-decimal value otherwise.
 
+## Branding & fonts
+
+Styled after The Brain Maze logo: coral `#F37367` and navy `#232F5B`, squared corners.
+Headings, buttons and labels use the **Brain** typeface (`src/assets/fonts/Brain.woff2`, © Vladimir Nikolic),
+which is inlined into the CSS at build time. Brain is capitals-only and has no math symbols, so math
+(`a² + b² = c²`, side names) is set in **Saira Semi Condensed**, and any character Brain lacks falls
+back to Saira automatically.
+
 ## Getting started
 
 ```bash
