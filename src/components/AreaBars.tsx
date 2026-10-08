@@ -9,7 +9,7 @@ export function AreaBars({ a, b }: { a: number; b: number }) {
 
   return (
     <div className="space-y-2">
-      <div className="flex h-7 overflow-hidden rounded-xl bg-slate-100 text-[11px] font-semibold text-white">
+      <div className="flex h-7 overflow-hidden rounded-lg bg-slate-100 font-display text-xs font-bold text-white">
         <div
           className="flex items-center justify-center overflow-hidden whitespace-nowrap transition-[width] duration-300 ease-out"
           style={{ width: `${pa}%`, backgroundColor: COLORS.a }}
@@ -24,7 +24,7 @@ export function AreaBars({ a, b }: { a: number; b: number }) {
         </div>
       </div>
       <div
-        className="flex h-7 items-center justify-center rounded-xl text-[11px] font-semibold text-white"
+        className="flex h-7 items-center justify-center rounded-lg font-display text-xs font-bold text-white"
         style={{ backgroundColor: COLORS.c }}
       >
         c² = {fmtTenThousandths(c2)}

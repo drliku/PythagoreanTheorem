@@ -231,7 +231,7 @@ export function TriangleCanvas({ state, onChange, onInteract, showSquares, showU
           stroke={color}
           strokeWidth={2}
           strokeLinejoin="round"
-          style={{ filter: 'drop-shadow(0 6px 12px rgba(15,23,42,0.12))' }}
+          style={{ filter: 'drop-shadow(0 6px 12px rgba(35,47,91,0.12))' }}
         />
         {sidePx > 40 && (
           <text x={c.x} y={c.y + fs * 0.35} textAnchor="middle" fontSize={fs * 1.1} fontWeight={800} fill="#fff" className="font-display">
@@ -263,7 +263,7 @@ export function TriangleCanvas({ state, onChange, onInteract, showSquares, showU
     const width = text.length * 7.4 + 18;
     return (
       <g key={`l-${key}`} transform={`translate(${x} ${y})`} pointerEvents="none">
-        <rect x={-width / 2} y={-13} width={width} height={26} rx={13} fill="#fff" stroke={COLORS[key]} strokeOpacity={0.35} />
+        <rect x={-width / 2} y={-13} width={width} height={26} rx={4} fill="#fff" stroke={COLORS[key]} strokeWidth={1.5} />
         <text textAnchor="middle" y={4.5} fontSize={13} className="font-mono" fontWeight={600} fill={COLORS[key]}>
           {text}
         </text>
@@ -313,7 +313,7 @@ export function TriangleCanvas({ state, onChange, onInteract, showSquares, showU
             fill="#fff"
             stroke={color}
             strokeWidth={3}
-            style={{ transition: 'r 180ms ease', filter: 'drop-shadow(0 2px 4px rgba(15,23,42,0.25))' }}
+            style={{ transition: 'r 180ms ease', filter: 'drop-shadow(0 2px 4px rgba(35,47,91,0.25))' }}
           />
         </g>
       </g>
@@ -349,15 +349,15 @@ export function TriangleCanvas({ state, onChange, onInteract, showSquares, showU
       >
         <defs>
           <pattern id="grid-minor" width={minor} height={minor} patternUnits="userSpaceOnUse" patternTransform={`translate(${view.tx} ${view.ty})`}>
-            <path d={`M ${minor} 0 L 0 0 0 ${minor}`} fill="none" stroke="#0f172a" strokeOpacity={0.05} strokeWidth={1} />
+            <path d={`M ${minor} 0 L 0 0 0 ${minor}`} fill="none" stroke="#232F5B" strokeOpacity={0.05} strokeWidth={1} />
           </pattern>
           <pattern id="grid-major" width={major} height={major} patternUnits="userSpaceOnUse" patternTransform={`translate(${view.tx} ${view.ty})`}>
             <rect width={major} height={major} fill="url(#grid-minor)" />
-            <path d={`M ${major} 0 L 0 0 0 ${major}`} fill="none" stroke="#0f172a" strokeOpacity={0.08} strokeWidth={1} />
+            <path d={`M ${major} 0 L 0 0 0 ${major}`} fill="none" stroke="#232F5B" strokeOpacity={0.08} strokeWidth={1} />
           </pattern>
           <linearGradient id="tri-fill" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="#ffffff" stopOpacity={0.96} />
-            <stop offset="100%" stopColor="#f1f5f9" stopOpacity={0.96} />
+            <stop offset="100%" stopColor="#f7f7fa" stopOpacity={0.96} />
           </linearGradient>
         </defs>
 
@@ -399,7 +399,7 @@ export function TriangleCanvas({ state, onChange, onInteract, showSquares, showU
         <polygon
           points={ptsAttr([g.A, g.B, g.C])}
           fill="url(#tri-fill)"
-          style={{ filter: 'drop-shadow(0 10px 18px rgba(15,23,42,0.10))' }}
+          style={{ filter: 'drop-shadow(0 10px 18px rgba(35,47,91,0.10))' }}
           pointerEvents="none"
         />
         <polyline
@@ -429,7 +429,7 @@ export function TriangleCanvas({ state, onChange, onInteract, showSquares, showU
         <div className="pointer-events-none absolute inset-x-0 top-3 flex justify-center px-3">
           <div
             key={caption}
-            className="animate-fade-in max-w-full rounded-full border border-slate-200/80 bg-white/90 px-4 py-2 text-center text-xs font-medium text-slate-700 shadow-soft backdrop-blur sm:text-sm"
+            className="animate-fade-in max-w-full rounded-lg bg-navy px-4 py-2 text-center font-display text-xs font-semibold tracking-wide text-white shadow-lift sm:text-sm"
           >
             {caption}
           </div>

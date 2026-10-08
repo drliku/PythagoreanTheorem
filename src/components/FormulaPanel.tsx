@@ -34,11 +34,11 @@ export function FormulaPanel({ a, b, highlight }: Props) {
 
   return (
     <div
-      className={`card px-4 py-5 transition-shadow duration-500 sm:px-6 ${highlight ? 'shadow-lift ring-2 ring-orange-200' : ''}`}
+      className={`card px-4 py-5 transition-shadow duration-500 sm:px-6 ${highlight ? 'shadow-lift ring-2 ring-coral-200' : ''}`}
       aria-live="polite"
     >
       <div className="flex flex-col items-center gap-3 text-center">
-        <div className="font-display text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+        <div className="font-display text-4xl font-extrabold tracking-wide text-navy sm:text-5xl">
           <Term color={COLORS.a}>a²</Term>
           <span className="mx-2 text-slate-300">+</span>
           <Term color={COLORS.b}>b²</Term>
@@ -66,7 +66,7 @@ export function FormulaPanel({ a, b, highlight }: Props) {
           <span className="text-slate-500">c =</span>
           <span className="text-slate-500">√{fmtTenThousandths(hyp.c2)}</span>
           <span className="text-slate-400">{hyp.exact ? '=' : '≈'}</span>
-          <span className="rounded-xl bg-orange-500 px-2.5 py-0.5 font-semibold text-white shadow-sm tabular-nums">{hyp.text}</span>
+          <span className="rounded-lg bg-coral px-2.5 py-0.5 font-semibold text-white shadow-sm tabular-nums">{hyp.text}</span>
         </div>
       </div>
     </div>

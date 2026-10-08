@@ -1,3 +1,19 @@
+/*
+ * "Brain" is picked up from the visitor's installed fonts. To ship it with the
+ * site instead, drop the file in public/fonts/ and it is loaded from there.
+ * Characters Brain doesn't have (², √, ≈, digits…) fall back to Saira glyph-by-glyph.
+ */
+@font-face {
+  font-family: 'Brain';
+  src:
+    local('Brain'),
+    local('Brain Regular'),
+    local('Brain-Regular'),
+    url('/fonts/Brain.woff2') format('woff2'),
+    url('/fonts/Brain.ttf') format('truetype');
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,27 +25,34 @@
     text-rendering: optimizeLegibility;
   }
   body {
-    @apply bg-slate-50 font-sans text-slate-800;
+    @apply font-sans text-slate-800;
+    background-color: #fbf9f8;
     background-image:
-      radial-gradient(1200px 600px at 10% -10%, rgba(59, 130, 246, 0.08), transparent 60%),
-      radial-gradient(900px 500px at 100% 0%, rgba(139, 92, 246, 0.08), transparent 60%),
-      radial-gradient(800px 500px at 50% 110%, rgba(249, 115, 22, 0.06), transparent 60%);
+      radial-gradient(900px 500px at 100% -10%, rgba(243, 115, 103, 0.10), transparent 60%),
+      radial-gradient(900px 500px at -10% 110%, rgba(35, 47, 91, 0.06), transparent 60%);
     background-attachment: fixed;
   }
 }
 
 @layer components {
   .card {
-    @apply rounded-3xl border border-slate-200/70 bg-white/80 shadow-soft backdrop-blur;
+    @apply rounded-3xl border border-slate-200 bg-white shadow-soft;
   }
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 font-display text-sm font-bold uppercase tracking-wide transition duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-50;
   }
   .btn-primary {
-    @apply btn bg-slate-900 text-white shadow-lift hover:bg-slate-800 focus-visible:ring-slate-400;
+    @apply btn bg-coral text-white shadow-lift hover:bg-coral-600 focus-visible:ring-coral-200;
+  }
+  .section-title {
+    @apply flex items-center gap-3 font-display text-base font-bold uppercase tracking-wide text-coral;
+  }
+  .section-title::before {
+    content: '';
+    @apply h-[3px] w-6 shrink-0 bg-coral;
   }
   .btn-ghost {
-    @apply btn border border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50 focus-visible:ring-slate-300;
+    @apply btn border-2 border-navy bg-white text-navy hover:bg-navy hover:text-white focus-visible:ring-slate-300;
   }
 }
 
@@ -49,17 +72,17 @@
 }
 .range::-webkit-slider-runnable-track {
   height: 8px;
-  border-radius: 999px;
+  border-radius: 2px;
   background: linear-gradient(to right, var(--accent) var(--fill), #e2e8f0 var(--fill));
 }
 .range::-moz-range-track {
   height: 8px;
-  border-radius: 999px;
+  border-radius: 2px;
   background: #e2e8f0;
 }
 .range::-moz-range-progress {
   height: 8px;
-  border-radius: 999px;
+  border-radius: 2px;
   background: var(--accent);
 }
 .range::-webkit-slider-thumb {
@@ -68,24 +91,24 @@
   margin-top: -7px;
   width: 22px;
   height: 22px;
-  border-radius: 999px;
+  border-radius: 3px;
   background: #fff;
   border: 3px solid var(--accent);
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.2);
+  box-shadow: 0 2px 6px rgba(35, 47, 91, 0.2);
   transition: transform 150ms ease, box-shadow 150ms ease;
 }
 .range::-moz-range-thumb {
   width: 16px;
   height: 16px;
-  border-radius: 999px;
+  border-radius: 3px;
   background: #fff;
   border: 3px solid var(--accent);
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.2);
+  box-shadow: 0 2px 6px rgba(35, 47, 91, 0.2);
 }
 .range:hover::-webkit-slider-thumb,
 .range:focus-visible::-webkit-slider-thumb {
   transform: scale(1.12);
-  box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 18%, transparent), 0 2px 6px rgba(15, 23, 42, 0.2);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 18%, transparent), 0 2px 6px rgba(35, 47, 91, 0.2);
 }
 
 @keyframes fade-in {
