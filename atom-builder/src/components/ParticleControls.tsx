@@ -18,7 +18,7 @@ const ROWS: Row[] = [
     symbol: 'p⁺',
     effect: 'Changes the element',
     color: 'text-proton',
-    gradient: 'radial-gradient(circle at 35% 30%, #ffb3bd, #ff5a6e 55%, #b3263a)',
+    gradient: 'radial-gradient(circle at 35% 30%, #ffc4bd, #F37367 55%, #b8443a)',
   },
   {
     kind: 'neutrons',
@@ -56,12 +56,12 @@ export function ParticleControls({ counts, limits, onChange, footer }: Props) {
           const atMin = value <= lim.min;
           const atMax = value >= lim.max;
           return (
-            <div key={r.kind} className="rounded-2xl border border-white/[0.06] bg-white/[0.025] p-3">
+            <div key={r.kind} className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-3">
               <div className="flex items-center gap-3">
                 <span className="h-9 w-9 shrink-0 rounded-full shadow-lg" style={{ background: r.gradient }} aria-hidden />
                 <div className="min-w-0 flex-1">
-                  <div className="font-display text-sm font-semibold text-white">{r.name}</div>
-                  <div className={`font-mono text-xs ${r.color}`}>{r.symbol}</div>
+                  <div className="font-display text-base font-bold uppercase leading-none tracking-wide text-white">{r.name}</div>
+                  <div className={`mt-0.5 font-math text-sm font-semibold ${r.color}`}>{r.symbol}</div>
                 </div>
                 <div className="flex items-center gap-2">
                   <button
@@ -76,7 +76,7 @@ export function ParticleControls({ counts, limits, onChange, footer }: Props) {
                   </button>
                   <span
                     key={value}
-                    className="animate-pop w-9 text-center font-display text-2xl font-bold tabular-nums text-white"
+                    className="animate-pop w-9 text-center font-display text-3xl font-bold tabular-nums text-white"
                     aria-live="polite"
                     aria-label={`${value} ${r.name.toLowerCase()}`}
                   >

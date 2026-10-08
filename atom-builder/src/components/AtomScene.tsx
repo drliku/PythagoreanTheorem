@@ -24,12 +24,12 @@ interface SceneProps {
 }
 
 const COLORS = {
-  proton: '#ff5a6e',
+  proton: '#F37367',
   neutron: '#a9b4c8',
   electron: '#4cb5ff',
   ring: '#5aa9ff',
   ringHot: '#9fd2ff',
-  nucleusGlow: '#ff8f7a',
+  nucleusGlow: '#F68B81',
 };
 
 // ---------------------------------------------------------------------------
@@ -46,7 +46,7 @@ const protonMat = new THREE.MeshPhysicalMaterial({
   metalness: 0.05,
   clearcoat: 0.6,
   clearcoatRoughness: 0.25,
-  emissive: '#5a0d1a',
+  emissive: '#5c1a14',
   emissiveIntensity: 0.35,
 });
 const neutronMat = new THREE.MeshPhysicalMaterial({
@@ -79,7 +79,7 @@ function canvasTexture(draw: (ctx: CanvasRenderingContext2D, size: number) => vo
 function labelTexture(text: string, color: string) {
   return canvasTexture((ctx, s) => {
     ctx.fillStyle = color;
-    ctx.font = `700 ${s * 0.72}px Sora, Manrope, system-ui, sans-serif`;
+    ctx.font = `700 ${s * 0.72}px 'Saira Semi Condensed', Saira, system-ui, sans-serif`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(text, s / 2, s / 2 + s * 0.04);
@@ -223,7 +223,7 @@ function Nucleus({
       </mesh>
       {selected && (
         <Html position={[0, -(r + 0.55), 0]} center zIndexRange={[20, 0]}>
-          <div className="pointer-events-none whitespace-nowrap rounded-full border border-proton/40 bg-lab-950/85 px-3 py-1 text-xs font-semibold text-white backdrop-blur">
+          <div className="pointer-events-none whitespace-nowrap rounded-lg border border-proton/40 bg-lab-950/85 px-3 py-1 text-xs font-semibold text-white backdrop-blur">
             Nucleus · <span className="text-proton">{protons} p⁺</span> + <span className="text-neutron">{neutrons} n⁰</span>
           </div>
         </Html>
@@ -358,7 +358,7 @@ function ShellRing({
       {(showLabel || selected) && (
         <Html position={[Math.cos(lp) * radius, Math.sin(lp) * radius, 0]} center zIndexRange={[20, 0]}>
           <div
-            className={`pointer-events-none -translate-y-4 translate-x-4 whitespace-nowrap rounded-full border px-2.5 py-0.5 text-[11px] font-semibold backdrop-blur transition-colors ${
+            className={`pointer-events-none -translate-y-4 translate-x-4 whitespace-nowrap rounded-md border px-2.5 py-0.5 text-[11px] font-semibold backdrop-blur transition-colors ${
               selected ? 'border-electron/60 bg-lab-950/90 text-white' : 'border-white/10 bg-lab-950/70 text-lab-200'
             }`}
           >

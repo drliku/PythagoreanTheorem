@@ -91,14 +91,21 @@ export default function App() {
   return (
     <div className="min-h-screen">
       <header className="mx-auto flex max-w-[1500px] flex-wrap items-center justify-between gap-4 px-4 pb-3 pt-6 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-3">
-          <AtomLogo />
-          <div>
-            <h1 className="font-display text-xl font-bold tracking-tight text-white sm:text-2xl">Atom Builder</h1>
-            <p className="text-xs text-lab-300 sm:text-sm">Add protons, neutrons and electrons — watch the element, isotope and charge change.</p>
+        {/* Wordmark laid out like The Brain Maze logo */}
+        <div className="flex items-stretch gap-3 sm:gap-4">
+          <div className="flex flex-col justify-center">
+            <h1 className="font-display text-[34px] font-bold uppercase leading-[0.9] tracking-wide text-coral sm:text-[52px]">Atom</h1>
+            <div className="mt-1 flex items-center gap-2 sm:gap-3">
+              <span className="h-[3px] w-10 bg-coral sm:h-1 sm:w-20" />
+              <span className="font-display text-[34px] font-bold uppercase leading-[0.9] tracking-wide text-coral sm:text-[52px]">Builder</span>
+            </div>
           </div>
+          <AtomLogo />
+          <p className="hidden max-w-[220px] self-center text-sm leading-snug text-lab-300 lg:block">
+            Add protons, neutrons and electrons and watch the element, isotope and charge change.
+          </p>
         </div>
-        <button type="button" onClick={reset} className="chip px-4 py-2 text-sm" title="Return to a hydrogen atom">
+        <button type="button" onClick={reset} className="btn-coral" title="Return to a hydrogen atom">
           <ResetIcon /> Reset to hydrogen
         </button>
       </header>
@@ -124,10 +131,10 @@ export default function App() {
             {/* HUD: identity */}
             <div className="pointer-events-none absolute left-4 top-4 sm:left-5 sm:top-5">
               <div key={atom.element.z} className="animate-rise">
-                <div className="font-display text-4xl font-extrabold leading-none text-white sm:text-5xl">
+                <div className="font-math text-4xl font-extrabold leading-none text-white sm:text-5xl">
                   {atom.ionSymbol}
                 </div>
-                <div className="mt-1 text-sm font-semibold text-lab-200">{atom.element.name}</div>
+                <div className="mt-1 font-display text-xl font-bold uppercase tracking-wide text-coral">{atom.element.name}</div>
                 <div className="font-mono text-[11px] text-lab-400">
                   Z = {counts.protons} · A = {atom.massNumber}
                 </div>
@@ -138,15 +145,15 @@ export default function App() {
             <div className="absolute right-3 top-3 flex flex-col items-end gap-2 sm:right-4 sm:top-4">
               <div className="flex gap-2">
                 <HudToggle label="Labels" on={showLabels} onClick={() => setShowLabels((v) => !v)} />
-                <button type="button" className="chip bg-lab-950/60 backdrop-blur" onClick={() => setResetSignal((n) => n + 1)} title="Reset camera">
+                <button type="button" className="chip bg-lab-950/60 font-display text-sm font-bold uppercase tracking-wide backdrop-blur" onClick={() => setResetSignal((n) => n + 1)} title="Reset camera">
                   Reset view
                 </button>
               </div>
             </div>
 
             {/* HUD: legend */}
-            <div className="pointer-events-none absolute bottom-3 left-3 flex flex-wrap gap-x-3 gap-y-1 rounded-2xl bg-lab-950/60 px-3 py-2 text-[11px] text-lab-200 backdrop-blur sm:bottom-4 sm:left-4">
-              <Legend color="#ff5a6e" label="Proton p⁺" />
+            <div className="pointer-events-none absolute bottom-3 left-3 flex flex-wrap gap-x-3 gap-y-1 rounded-lg bg-lab-950/70 font-math px-3 py-2 text-[11px] text-lab-200 backdrop-blur sm:bottom-4 sm:left-4">
+              <Legend color="#F37367" label="Proton p⁺" />
               <Legend color="#a9b4c8" label="Neutron n⁰" />
               <Legend color="#4cb5ff" label="Electron e⁻" />
             </div>
@@ -160,7 +167,7 @@ export default function App() {
               <div className="absolute inset-x-3 bottom-14 flex justify-center sm:bottom-16">
                 <div key={JSON.stringify(sel)} className="animate-rise max-w-md rounded-2xl border border-white/10 bg-lab-950/85 p-4 shadow-panel backdrop-blur-xl">
                   <SelectionText selection={sel} protons={counts.protons} neutrons={counts.neutrons} shells={shells} />
-                  <button type="button" className="mt-2 text-xs font-semibold text-lab-300 hover:text-white" onClick={() => setSelected(null)}>
+                  <button type="button" className="mt-2 font-display text-sm font-bold uppercase tracking-wide text-coral hover:text-coral-400" onClick={() => setSelected(null)}>
                     Close
                   </button>
                 </div>
@@ -168,7 +175,7 @@ export default function App() {
             )}
           </div>
           <p className="mt-2 px-1 text-center text-[11px] leading-relaxed text-lab-400">
-            <span className="font-semibold text-lab-300">Bohr model:</span> a simplified educational picture. Real electrons don’t follow
+            <span className="font-display text-sm font-bold uppercase tracking-wide text-coral">Bohr model:</span> a simplified educational picture. Real electrons don’t follow
             circular orbits — they occupy fuzzy probability clouds (orbitals). Sizes are not to scale: a real nucleus is about
             100,000× smaller than its atom.
           </p>
@@ -198,16 +205,16 @@ export default function App() {
                   type="button"
                   onClick={() => build(p.counts)}
                   className={`flex flex-col items-center rounded-2xl border py-2.5 transition duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-electron/60 ${
-                    isActive(p.counts) ? 'border-electron/70 bg-electron/15' : 'border-white/10 bg-white/[0.03] hover:border-white/25 hover:bg-white/[0.06]'
+                    isActive(p.counts) ? 'border-coral bg-coral/20' : 'border-white/15 bg-white/[0.03] hover:border-coral/60 hover:bg-white/[0.06]'
                   }`}
                   title={p.sub}
                 >
-                  <span className="font-display text-lg font-bold text-white">{p.label}</span>
+                  <span className="font-math text-lg font-bold text-white">{p.label}</span>
                   <span className="text-[10px] text-lab-300">{p.sub}</span>
                 </button>
               ))}
             </div>
-            <h3 className="mb-2 mt-4 text-[11px] font-semibold uppercase tracking-wider text-lab-400">Isotopes & ions</h3>
+            <h3 className="mb-2 mt-4 font-display text-sm font-bold uppercase tracking-wide text-lab-300">Isotopes & ions</h3>
             <div className="flex flex-wrap gap-2">
               {EXTRAS.map((p) => (
                 <button
@@ -215,7 +222,7 @@ export default function App() {
                   type="button"
                   onClick={() => build(p.counts)}
                   title={p.hint}
-                  className={`chip ${isActive(p.counts) ? 'border-electron/70 bg-electron/15' : ''}`}
+                  className={`chip font-math text-[13px] ${isActive(p.counts) ? 'border-coral bg-coral/20' : ''}`}
                 >
                   {p.label}
                 </button>
@@ -245,19 +252,19 @@ export default function App() {
 
         {/* Learn */}
         <section className="order-5 grid gap-4 sm:grid-cols-2 xl:col-span-3 xl:grid-cols-4">
-          <LearnCard color="#ff5a6e" title="Protons · p⁺" tag="Identity">
+          <LearnCard color="#F37367" title="Protons" symbol="p⁺" tag="Identity">
             Positively charged particles in the nucleus. The number of protons is the <b>atomic number</b> and decides which element the atom
             is: 1 proton is always hydrogen, 6 is always carbon.
           </LearnCard>
-          <LearnCard color="#a9b4c8" title="Neutrons · n⁰" tag="Isotope">
+          <LearnCard color="#a9b4c8" title="Neutrons" symbol="n⁰" tag="Isotope">
             Neutral particles in the nucleus with almost the same mass as a proton. Changing them makes a different <b>isotope</b> of the same
             element, such as carbon-12 and carbon-14.
           </LearnCard>
-          <LearnCard color="#4cb5ff" title="Electrons · e⁻" tag="Charge">
+          <LearnCard color="#4cb5ff" title="Electrons" symbol="e⁻" tag="Charge">
             Tiny negative particles around the nucleus. Equal electrons and protons make a neutral atom; losing electrons makes a positive{' '}
             <b>cation</b>, gaining them makes a negative <b>anion</b>.
           </LearnCard>
-          <LearnCard color="#c7a6ff" title="About this model" tag="Bohr model">
+          <LearnCard color="#F37367" title="About this model" tag="Bohr model">
             Electrons are drawn on circular shells holding up to 2n² electrons (2, 8, 18, 32). This is a simplified teaching model: real
             electrons live in probability clouds called orbitals.
           </LearnCard>
@@ -271,7 +278,7 @@ function SelectionText({ selection, protons, neutrons, shells }: { selection: No
   if (selection.kind === 'nucleus') {
     return (
       <>
-        <div className="font-display text-sm font-bold text-proton">The nucleus</div>
+        <div className="font-display text-lg font-bold uppercase tracking-wide text-coral">The nucleus</div>
         <p className="mt-1 text-sm leading-relaxed text-lab-200">
           {protons} proton{protons === 1 ? '' : 's'} and {neutrons} neutron{neutrons === 1 ? '' : 's'} packed together. The nucleus holds
           over 99.9% of the atom’s mass. Its protons decide the element; neutrons add mass and help hold the nucleus together.
@@ -284,7 +291,7 @@ function SelectionText({ selection, protons, neutrons, shells }: { selection: No
   const isOuter = i === shells.length - 1;
   return (
     <>
-      <div className="font-display text-sm font-bold text-electron">
+      <div className="font-display text-lg font-bold uppercase tracking-wide text-electron">
         Shell {n} ({SHELL_LETTERS[i]}) · {shells[i]} of {shellCapacity(n)} electrons
       </div>
       <p className="mt-1 text-sm leading-relaxed text-lab-200">
@@ -296,15 +303,16 @@ function SelectionText({ selection, protons, neutrons, shells }: { selection: No
   );
 }
 
-function LearnCard({ color, title, tag, children }: { color: string; title: string; tag: string; children: ReactNode }) {
+function LearnCard({ color, title, symbol, tag, children }: { color: string; title: string; symbol?: string; tag: string; children: ReactNode }) {
   return (
     <div className="panel p-5">
       <div className="mb-2 flex items-center justify-between gap-2">
-        <span className="flex items-center gap-2 font-display text-sm font-bold text-white">
+        <span className="flex items-center gap-2 font-display text-lg font-bold uppercase tracking-wide text-white">
           <span className="h-3 w-3 rounded-full" style={{ background: color, boxShadow: `0 0 12px ${color}` }} />
           {title}
+          {symbol && <span className="font-math text-sm font-semibold normal-case" style={{ color }}>{symbol}</span>}
         </span>
-        <span className="rounded-full border border-white/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-lab-300">{tag}</span>
+        <span className="rounded-md border border-coral/40 px-2 py-0.5 font-display text-xs font-bold uppercase tracking-wide text-coral">{tag}</span>
       </div>
       <p className="text-sm leading-relaxed text-lab-300 [&_b]:font-semibold [&_b]:text-white">{children}</p>
     </div>
@@ -321,11 +329,11 @@ function Switch({ label, hint, on, onChange }: { label: string; hint: string; on
       className="flex w-full items-center justify-between gap-3 rounded-xl px-1 py-1 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-electron/60"
     >
       <span>
-        <span className="block text-sm font-semibold text-lab-100">{label}</span>
+        <span className="block font-display text-base font-bold uppercase tracking-wide text-lab-100">{label}</span>
         <span className="block text-[11px] text-lab-400">{hint}</span>
       </span>
-      <span className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors duration-300 ${on ? 'bg-electron' : 'bg-white/15'}`}>
-        <span className={`inline-block h-5 w-5 rounded-full bg-white shadow transition-transform duration-300 ${on ? 'translate-x-[22px]' : 'translate-x-0.5'}`} />
+      <span className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-md transition-colors duration-300 ${on ? 'bg-coral' : 'bg-white/15'}`}>
+        <span className={`inline-block h-5 w-5 rounded bg-white shadow transition-transform duration-300 ${on ? 'translate-x-[22px]' : 'translate-x-0.5'}`} />
       </span>
     </button>
   );
@@ -337,9 +345,9 @@ function HudToggle({ label, on, onClick }: { label: string; on: boolean; onClick
       type="button"
       onClick={onClick}
       aria-pressed={on}
-      className={`chip backdrop-blur ${on ? 'border-electron/60 bg-electron/20 text-white' : 'bg-lab-950/60'}`}
+      className={`chip font-display text-sm font-bold uppercase tracking-wide backdrop-blur ${on ? 'border-coral bg-coral text-white' : 'bg-lab-950/60'}`}
     >
-      <span className={`h-1.5 w-1.5 rounded-full ${on ? 'bg-electron' : 'bg-lab-400'}`} />
+      <span className={`h-1.5 w-1.5 ${on ? 'bg-white' : 'bg-lab-400'}`} />
       {label}
     </button>
   );
@@ -356,13 +364,12 @@ function Legend({ color, label }: { color: string; label: string }) {
 
 function AtomLogo() {
   return (
-    <div className="grid h-11 w-11 place-items-center rounded-2xl border border-white/10 bg-lab-850 shadow-panel">
-      <svg viewBox="0 0 32 32" className="h-8 w-8" aria-hidden>
-        <ellipse cx="16" cy="16" rx="12" ry="4.6" fill="none" stroke="#4cb5ff" strokeWidth="1.4" />
-        <ellipse cx="16" cy="16" rx="12" ry="4.6" fill="none" stroke="#4cb5ff" strokeWidth="1.4" transform="rotate(60 16 16)" />
-        <ellipse cx="16" cy="16" rx="12" ry="4.6" fill="none" stroke="#4cb5ff" strokeWidth="1.4" transform="rotate(120 16 16)" />
-        <circle cx="14.6" cy="16" r="2.3" fill="#ff5a6e" />
-        <circle cx="17.4" cy="16" r="2.3" fill="#a9b4c8" />
+    <div className="grid aspect-square w-[68px] shrink-0 place-items-center bg-coral sm:w-[104px]">
+      <svg viewBox="0 0 32 32" className="h-[78%] w-[78%]" aria-hidden>
+        <ellipse cx="16" cy="16" rx="12.5" ry="4.8" fill="none" stroke="#232F5B" strokeWidth="1.9" />
+        <ellipse cx="16" cy="16" rx="12.5" ry="4.8" fill="none" stroke="#232F5B" strokeWidth="1.9" transform="rotate(60 16 16)" />
+        <ellipse cx="16" cy="16" rx="12.5" ry="4.8" fill="none" stroke="#232F5B" strokeWidth="1.9" transform="rotate(120 16 16)" />
+        <circle cx="16" cy="16" r="3.1" fill="#232F5B" />
       </svg>
     </div>
   );

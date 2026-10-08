@@ -27,7 +27,7 @@ export function PeriodicTable({ activeZ, onPick }: Props) {
                 title={`${el.name} (Z = ${el.z})`}
                 aria-label={`${el.name}, atomic number ${el.z}`}
                 aria-pressed={active}
-                className={`group relative flex aspect-square flex-col items-center justify-center rounded-lg border transition duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 ${
+                className={`group relative flex aspect-square flex-col items-center justify-center rounded border transition duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 ${
                   active ? 'z-10 scale-110 shadow-lg' : 'hover:-translate-y-0.5 hover:brightness-125'
                 }`}
                 style={{
@@ -39,7 +39,7 @@ export function PeriodicTable({ activeZ, onPick }: Props) {
                 }}
               >
                 <span className="absolute left-1 top-0.5 font-mono text-[8px] text-lab-300 sm:text-[9px]">{el.z}</span>
-                <span className="font-display text-[13px] font-bold text-white sm:text-sm">{el.symbol}</span>
+                <span className="font-math text-[13px] font-bold text-white sm:text-sm">{el.symbol}</span>
               </button>
             );
           })}
@@ -48,7 +48,7 @@ export function PeriodicTable({ activeZ, onPick }: Props) {
       <div className="mx-auto mt-4 flex max-w-[1040px] flex-wrap gap-x-4 gap-y-1.5">
         {categories.map((k) => (
           <span key={k} className="inline-flex items-center gap-1.5 text-[11px] text-lab-300">
-            <span className="h-2.5 w-2.5 rounded-sm" style={{ background: CATEGORY_INFO[k].color }} />
+            <span className="h-2.5 w-2.5" style={{ background: CATEGORY_INFO[k].color }} />
             {CATEGORY_INFO[k].label}
           </span>
         ))}
