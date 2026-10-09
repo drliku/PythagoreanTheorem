@@ -10,7 +10,7 @@ interface Props {
 function Picker({ slot, value, onChange }: { slot: 0 | 1; value: Substance; onChange: Props['onChange'] }) {
   return (
     <div>
-      <div className="mb-2 text-xs font-semibold text-lab-300">Beaker {slot === 0 ? 'A' : 'B'}</div>
+      <div className="mb-2 font-display text-base font-bold uppercase tracking-wide text-lab-100">Beaker {slot === 0 ? 'A' : 'B'}</div>
       <div className="flex flex-wrap gap-1.5">
         {SUBSTANCES.map((s) => {
           const active = s.id === value.id;
@@ -20,9 +20,9 @@ function Picker({ slot, value, onChange }: { slot: 0 | 1; value: Substance; onCh
               type="button"
               onClick={() => onChange(slot, s.id)}
               aria-pressed={active}
-              className={`chip ${active ? 'border-white/60 bg-white/15 text-white' : ''}`}
+              className={`chip ${active ? 'border-coral bg-coral/20 text-white' : ''}`}
             >
-              <span className="h-2.5 w-2.5 rounded-full" style={{ background: indicatorCss(s.ph) }} />
+              <span className="h-2.5 w-2.5" style={{ background: indicatorCss(s.ph) }} />
               {s.name}
             </button>
           );
@@ -54,13 +54,13 @@ export function ComparePanel({ a, b, onChange }: Props) {
         ].map(({ s, r, tag }) => (
           <div key={tag} className="flex items-center gap-3 rounded-2xl border border-white/[0.06] bg-white/[0.025] p-3">
             <div
-              className="grid h-14 w-14 shrink-0 place-items-center rounded-xl font-display text-lg font-bold text-white"
+              className="grid h-14 w-14 shrink-0 place-items-center font-display text-2xl font-bold text-white"
               style={{ background: indicatorCss(s.ph), textShadow: '0 1px 6px rgba(0,0,0,0.45)' }}
             >
               {s.ph}
             </div>
             <div className="min-w-0 text-sm">
-              <div className="font-semibold text-white">
+              <div className="font-display text-base font-bold uppercase tracking-wide text-white">
                 {tag}: {s.name}
               </div>
               <div className="font-mono text-xs text-lab-300">[H⁺] ≈ {formatSci(r.h, 1)} M</div>
@@ -70,7 +70,7 @@ export function ComparePanel({ a, b, onChange }: Props) {
         ))}
       </div>
 
-      <div className="mt-4 rounded-2xl border border-aqua/25 bg-aqua/[0.06] p-4 text-sm leading-relaxed text-lab-100">
+      <div className="mt-4 rounded-2xl border border-coral/40 bg-coral/[0.07] p-4 text-sm leading-relaxed text-lab-100">
         {diff < 0.005 ? (
           <>Both solutions have the same pH, so they have the same hydrogen ion concentration.</>
         ) : (

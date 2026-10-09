@@ -132,8 +132,8 @@ const gradGeo = new THREE.CylinderGeometry(R + 0.004, R + 0.004, H, 48, 1, true,
 const gridTexture = (() => {
   const t = canvasTexture(1024, 1024, (ctx) => {
     const g = ctx.createRadialGradient(512, 470, 40, 512, 512, 620);
-    g.addColorStop(0, '#13224c');
-    g.addColorStop(1, '#0a1228');
+    g.addColorStop(0, '#26336a');
+    g.addColorStop(1, '#0f1430');
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, 1024, 1024);
     ctx.strokeStyle = 'rgba(150,170,230,0.08)';
@@ -154,9 +154,9 @@ const gridTexture = (() => {
 
 const benchTexture = canvasTexture(512, 512, (ctx) => {
   const g = ctx.createRadialGradient(256, 256, 0, 256, 256, 256);
-  g.addColorStop(0, '#16224a');
-  g.addColorStop(0.35, '#0e1838');
-  g.addColorStop(1, '#0a1228');
+  g.addColorStop(0, '#26306a');
+  g.addColorStop(0.35, '#1a2250');
+  g.addColorStop(1, '#0f1430');
   ctx.fillStyle = g;
   ctx.fillRect(0, 0, 512, 512);
 });
@@ -401,7 +401,7 @@ function Beaker({
 
       {showLabel && spec.label && (
         <Html position={[0, H + 0.55, 0]} center zIndexRange={[10, 0]}>
-          <div className="pointer-events-none whitespace-nowrap rounded-full border border-white/15 bg-lab-950/80 px-3 py-1 text-center text-xs font-semibold text-white backdrop-blur">
+          <div className="pointer-events-none whitespace-nowrap rounded-md border border-coral/50 bg-lab-950/85 px-3 py-1 text-center font-display text-sm font-bold uppercase tracking-wide text-white backdrop-blur">
             {spec.label}
           </div>
         </Html>
@@ -466,7 +466,7 @@ function Dropper({ kind, visible, label, paused }: { kind: 'acid' | 'base'; visi
         <meshPhysicalMaterial color={color} roughness={0.45} clearcoat={0.4} />
       </mesh>
       <Html position={[0.32, 1.7, 0]} zIndexRange={[10, 0]}>
-        <div className="pointer-events-none whitespace-nowrap rounded-full border border-white/15 bg-lab-950/80 px-2.5 py-1 font-mono text-[11px] font-semibold text-white backdrop-blur">
+        <div className="pointer-events-none whitespace-nowrap rounded-md border border-white/20 bg-lab-950/85 px-2.5 py-1 font-mono text-[11px] font-semibold text-white backdrop-blur">
           {label}
         </div>
       </Html>
@@ -732,7 +732,7 @@ export function BeakerScene(props: SceneProps) {
       style={{ touchAction: 'none' }}
       key={compare ? 'compare' : 'single'}
     >
-      <color attach="background" args={['#0a1228']} />
+      <color attach="background" args={['#0f1430']} />
       <ambientLight intensity={0.35} />
       <directionalLight position={[4, 8, 6]} intensity={1.4} />
       <directionalLight position={[-6, 3, -4]} intensity={0.5} color="#8fb4ff" />

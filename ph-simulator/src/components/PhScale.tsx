@@ -71,9 +71,9 @@ export function PhScale({ markers, onPick }: Props) {
             className="pointer-events-none absolute top-1/2 -translate-x-1/2 -translate-y-1/2 transition-[left] duration-300 ease-out"
             style={{ left: `${(Math.min(14, Math.max(0, m.ph)) / 14) * 100}%` }}
           >
-            <div className="h-16 w-1.5 rounded-full bg-white shadow-[0_0_0_2px_rgba(10,18,40,0.6),0_6px_18px_rgba(0,0,0,0.5)] sm:h-[72px]" />
+            <div className="h-16 w-1.5 rounded-sm bg-white shadow-[0_0_0_2px_rgba(10,18,40,0.6),0_6px_18px_rgba(0,0,0,0.5)] sm:h-[72px]" />
             <div
-              className="absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border-2 border-white px-2 py-0.5 font-mono text-[11px] font-bold text-white shadow-lg"
+              className="absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md border-2 border-white px-2 py-0.5 font-mono text-[11px] font-bold text-white shadow-lg"
               style={{ background: indicatorCss(m.ph) }}
             >
               {m.label ? `${m.label} · ` : ''}
@@ -104,7 +104,7 @@ export function PhScale({ markers, onPick }: Props) {
             className="flex items-center justify-center border-r border-white/[0.06] bg-white/[0.03] px-0.5 text-center last:border-r-0"
             style={{ width: `${((b.to - b.from) / 14) * 100}%` }}
           >
-            <span className={`text-[9px] font-semibold uppercase leading-tight tracking-wide sm:text-[11px] ${BAND_STYLE[b.band]}`}>{b.band}</span>
+            <span className={`font-display text-[11px] font-bold uppercase leading-tight tracking-wide sm:text-sm ${BAND_STYLE[b.band]}`}>{b.band}</span>
           </div>
         ))}
       </div>

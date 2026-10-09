@@ -45,14 +45,14 @@ export function InfoPanel({ ph, volume, label, log }: Props) {
 
       <div className="flex items-center gap-4">
         <div
-          className="grid h-20 w-20 shrink-0 place-items-center rounded-2xl border border-white/20 font-display text-2xl font-bold text-white shadow-lg transition-colors duration-500"
+          className="grid h-20 w-20 shrink-0 place-items-center border-2 border-white/30 font-display text-3xl font-bold text-white shadow-lg transition-colors duration-500"
           style={{ background: indicatorCss(ph), textShadow: '0 1px 6px rgba(0,0,0,0.45)' }}
         >
           {ph.toFixed(2)}
         </div>
         <div className="min-w-0">
-          <span className={`inline-flex rounded-full border px-2.5 py-0.5 text-xs font-semibold ${kind.cls}`}>{kind.text}</span>
-          <div className="mt-1.5 font-display text-lg font-semibold text-white">{bandOf(ph)}</div>
+          <span className={`inline-flex rounded-md border px-2.5 py-0.5 font-display text-sm font-bold uppercase tracking-wide ${kind.cls}`}>{kind.text}</span>
+          <div className="mt-1.5 font-display text-2xl font-bold uppercase tracking-wide text-coral">{bandOf(ph)}</div>
           <div className="truncate text-xs text-lab-300">{label}</div>
         </div>
       </div>
@@ -74,11 +74,11 @@ export function InfoPanel({ ph, volume, label, log }: Props) {
 
       {log.length > 0 && (
         <div className="mt-4">
-          <h3 className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-lab-400">Lab notebook</h3>
+          <h3 className="mb-2 font-display text-base font-bold uppercase tracking-wide text-lab-200">Lab notebook</h3>
           <ol className="space-y-1.5">
             {log.map((e) => (
               <li key={e.id} className="animate-rise flex items-center gap-2 text-xs text-lab-200">
-                <span className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ background: indicatorCss(e.ph) }} />
+                <span className="h-2.5 w-2.5 shrink-0" style={{ background: indicatorCss(e.ph) }} />
                 <span className="min-w-0 flex-1">{e.text}</span>
                 <span className="font-mono text-lab-300">pH {e.ph.toFixed(2)}</span>
               </li>

@@ -201,15 +201,25 @@ export default function App() {
   return (
     <div className="min-h-screen">
       <header className="mx-auto flex max-w-[1500px] flex-wrap items-center justify-between gap-4 px-4 pb-3 pt-6 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-3">
+        {/* Wordmark laid out like The Brain Maze logo; "pH" stays in Saira to keep its lowercase p */}
+        <div className="flex items-stretch gap-3 sm:gap-4">
+          <h1 className="flex flex-col justify-center text-coral">
+            <span className="flex items-baseline gap-2 leading-[0.9]">
+              <span className="font-math text-[36px] font-extrabold sm:text-[54px]">pH</span>
+              <span className="font-display text-[34px] font-bold uppercase tracking-wide sm:text-[52px]">Scale</span>
+            </span>
+            <span className="mt-1 flex items-center gap-2 sm:gap-3">
+              <span className="h-[3px] flex-1 bg-coral sm:h-1" />
+              <span className="font-display text-[34px] font-bold uppercase leading-[0.9] tracking-wide sm:text-[52px]">Lab</span>
+            </span>
+          </h1>
           <Logo />
-          <div>
-            <h1 className="font-display text-xl font-bold tracking-tight text-white sm:text-2xl">pH Lab</h1>
-            <p className="text-xs text-lab-300 sm:text-sm">Mix acids, bases and water and watch the pH scale come alive.</p>
-          </div>
+          <p className="hidden max-w-[210px] self-center text-sm leading-snug text-lab-300 lg:block">
+            Mix acids, bases and water and watch the <span className="font-math">pH</span> scale come alive.
+          </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          <div className="flex rounded-2xl border border-white/10 bg-white/[0.04] p-1" role="tablist" aria-label="Mode">
+          <div className="flex rounded-lg border-2 border-white/15 bg-white/[0.04] p-1" role="tablist" aria-label="Mode">
             {(['experiment', 'compare'] as Mode[]).map((m) => (
               <button
                 key={m}
@@ -217,8 +227,8 @@ export default function App() {
                 role="tab"
                 aria-selected={mode === m}
                 onClick={() => setMode(m)}
-                className={`rounded-xl px-3.5 py-1.5 text-sm font-semibold transition duration-200 ${
-                  mode === m ? 'bg-white text-lab-900 shadow' : 'text-lab-200 hover:text-white'
+                className={`rounded px-3.5 py-1.5 font-display text-base font-bold uppercase tracking-wide transition duration-200 ${
+                  mode === m ? 'bg-coral text-white shadow' : 'text-lab-200 hover:text-white'
                 }`}
               >
                 {m === 'experiment' ? 'Experiment' : 'Compare two'}
@@ -229,7 +239,7 @@ export default function App() {
             {paused ? <PlayIcon /> : <PauseIcon />}
             {paused ? 'Resume animation' : 'Pause animation'}
           </button>
-          <button type="button" className="btn-ghost" onClick={reset}>
+          <button type="button" className="btn-coral" onClick={reset}>
             <ResetIcon /> Reset
           </button>
         </div>
@@ -255,29 +265,31 @@ export default function App() {
               {/* Headline pH */}
               {mode === 'experiment' ? (
                 <div className="pointer-events-none absolute inset-x-0 top-4 flex flex-col items-center sm:top-5">
-                  <div className="flex items-baseline gap-2 rounded-3xl border border-white/10 bg-lab-950/55 px-5 py-2 backdrop-blur-md">
-                    <span className="font-display text-lg font-semibold text-lab-200 sm:text-xl">pH</span>
+                  <div className="flex items-baseline gap-2 rounded-lg border-2 border-white/15 bg-lab-950/60 px-5 py-2 backdrop-blur-md">
+                    <span className="font-math text-xl font-bold text-coral sm:text-2xl">pH</span>
                     <span className="font-display text-5xl font-bold tabular-nums text-white sm:text-6xl" style={{ textShadow: `0 0 30px ${indicatorCss(ph)}` }}>
                       {ph.toFixed(2)}
                     </span>
                   </div>
                   <div className="mt-2 flex items-center gap-2">
                     <span
-                      className="rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-lg transition-colors duration-500"
+                      className="rounded-md px-3 py-1 font-display text-base font-bold uppercase tracking-wide text-white shadow-lg transition-colors duration-500"
                       style={{ background: indicatorCss(ph), textShadow: '0 1px 4px rgba(0,0,0,0.4)' }}
                     >
                       {kind === 'acidic' ? 'Acidic' : kind === 'basic' ? 'Basic (alkaline)' : 'Neutral'}
                     </span>
-                    <span className="rounded-full border border-white/10 bg-lab-950/60 px-3 py-1 text-xs font-medium text-lab-200 backdrop-blur">
-                      {bandOf(ph)}
-                    </span>
+                    {kind !== 'neutral' && (
+                      <span className="rounded-md border border-white/15 bg-lab-950/70 px-3 py-1 font-display text-base font-bold uppercase tracking-wide text-lab-200 backdrop-blur">
+                        {bandOf(ph)}
+                      </span>
+                    )}
                   </div>
                 </div>
               ) : (
                 <div className="pointer-events-none absolute inset-x-0 top-4 flex justify-center gap-3 sm:top-5">
                   {[compareA, compareB].map((s, i) => (
-                    <div key={i} className="rounded-2xl border border-white/10 bg-lab-950/60 px-4 py-2 text-center backdrop-blur-md">
-                      <div className="text-[11px] font-semibold text-lab-300">{i === 0 ? 'A' : 'B'}</div>
+                    <div key={i} className="rounded-lg border-2 border-white/15 bg-lab-950/65 px-4 py-2 text-center backdrop-blur-md">
+                      <div className="font-display text-sm font-bold text-coral">{i === 0 ? 'A' : 'B'}</div>
                       <div className="font-display text-3xl font-bold tabular-nums text-white" style={{ textShadow: `0 0 24px ${indicatorCss(s.ph)}` }}>
                         {s.ph.toFixed(1)}
                       </div>
@@ -289,7 +301,7 @@ export default function App() {
               {/* Volume + status */}
               {mode === 'experiment' && (
                 <div className="pointer-events-none absolute bottom-3 left-3 rounded-2xl border border-white/10 bg-lab-950/60 px-3 py-2 text-xs backdrop-blur sm:bottom-4 sm:left-4">
-                  <div className="font-semibold text-white">{label}</div>
+                  <div className="font-display text-sm font-bold uppercase tracking-wide text-white">{label}</div>
                   <div className="font-mono text-lab-300">
                     {fmtMl(solution.volume)} / {CAPACITY_L * 1000} mL
                   </div>
@@ -297,7 +309,7 @@ export default function App() {
               )}
               <div className="pointer-events-none absolute bottom-3 right-3 max-w-[230px] text-right text-[11px] leading-snug text-lab-400 sm:bottom-4 sm:right-4">
                 Drag to look around · scroll or pinch to zoom
-                {paused && <div className="mt-1 font-semibold text-aqua">Animation paused</div>}
+                {paused && <div className="mt-1 font-display text-sm font-bold uppercase tracking-wide text-coral">Animation paused</div>}
               </div>
             </div>
           </div>
@@ -336,7 +348,7 @@ export default function App() {
           )}
           {mode === 'experiment' && (
           <>
-          <Panel title="pH slider">
+          <Panel title={<><Ph /> slider</>}>
             <div className="flex items-baseline justify-between">
               <span className="text-sm text-lab-300">Set the solution’s pH</span>
               <span className="font-mono text-lg font-semibold text-white">{ph.toFixed(2)}</span>
@@ -384,7 +396,7 @@ export default function App() {
                   aria-checked={molarity === m}
                   onClick={() => setMolarity(m)}
                   className={`rounded-xl py-1.5 font-mono text-xs font-semibold transition ${
-                    molarity === m ? 'bg-white text-lab-900' : 'text-lab-200 hover:bg-white/[0.06]'
+                    molarity === m ? 'bg-coral text-white' : 'text-lab-200 hover:bg-white/[0.06]'
                   }`}
                 >
                   {fmtMolarity(m)} M
@@ -435,8 +447,8 @@ export default function App() {
                   {fmtMl(solution.volume)} / {CAPACITY_L * 1000} mL
                 </span>
               </div>
-              <div className="h-2 overflow-hidden rounded-full bg-white/10">
-                <div className="h-full rounded-full bg-aqua transition-[width] duration-300" style={{ width: `${(solution.volume / CAPACITY_L) * 100}%` }} />
+              <div className="h-2 overflow-hidden rounded-sm bg-white/10">
+                <div className="h-full rounded-sm bg-aqua transition-[width] duration-300" style={{ width: `${(solution.volume / CAPACITY_L) * 100}%` }} />
               </div>
             </div>
             <p className="mt-2 text-xs leading-relaxed text-lab-300">
@@ -461,15 +473,15 @@ export default function App() {
                       chooseSubstance(s.id);
                     }}
                     className={`flex items-center gap-3 rounded-2xl border px-3 py-2 text-left transition duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-aqua/60 ${
-                      active ? 'border-white/50 bg-white/[0.12]' : 'border-white/[0.07] bg-white/[0.025] hover:border-white/25 hover:bg-white/[0.06]'
+                      active ? 'border-coral bg-coral/15' : 'border-white/[0.08] bg-white/[0.025] hover:border-coral/60 hover:bg-white/[0.06]'
                     }`}
                   >
                     <span className="h-7 w-7 shrink-0 rounded-lg shadow-inner" style={{ background: indicatorCss(s.ph) }} />
                     <span className="min-w-0 flex-1">
-                      <span className="block text-sm font-semibold text-white">{s.name}</span>
+                      <span className="block font-display text-base font-bold uppercase leading-tight tracking-wide text-white">{s.name}</span>
                       <span className="block text-[11px] text-lab-400">{s.note}</span>
                     </span>
-                    <span className="font-mono text-sm font-semibold text-lab-100">{s.ph}</span>
+                    <span className="font-display text-xl font-bold text-lab-100">{s.ph}</span>
                   </button>
                 );
               })}
@@ -503,13 +515,13 @@ export default function App() {
 
         {/* Learn */}
         <section className="order-4 grid gap-4 sm:grid-cols-3 xl:col-span-3">
-          <Learn color="#f26522" title="Acids · pH below 7">
+          <Learn color="#f26522" title={<>Acids · <Ph /> below 7</>}>
             Acids release hydrogen ions (H⁺) in water. The more H⁺, the lower the pH. Lemon juice and vinegar are everyday acids.
           </Learn>
-          <Learn color="#4cb848" title="Neutral · pH 7">
+          <Learn color="#4cb848" title={<>Neutral · <Ph /> 7</>}>
             In pure water at 25 °C, [H⁺] and [OH⁻] are equal at 1.0 × 10⁻⁷ mol/L. Mixing equal amounts of a strong acid and strong base also gives pH 7.
           </Learn>
-          <Learn color="#6c4bd6" title="Bases · pH above 7">
+          <Learn color="#6c4bd6" title={<>Bases · <Ph /> above 7</>}>
             Bases (alkalis) increase hydroxide ions (OH⁻) and lower [H⁺]. Soapy water and bleach are basic.
           </Learn>
         </section>
@@ -518,7 +530,10 @@ export default function App() {
   );
 }
 
-function Panel({ title, children }: { title: string; children: ReactNode }) {
+/** "pH" inside Brain-set (caps-only) headings: keep the lowercase p. */
+const Ph = () => <span className="font-math normal-case">pH</span>;
+
+function Panel({ title, children }: { title: ReactNode; children: ReactNode }) {
   return (
     <div className="panel p-5">
       <h2 className="panel-title mb-3">{title}</h2>
@@ -527,10 +542,10 @@ function Panel({ title, children }: { title: string; children: ReactNode }) {
   );
 }
 
-function Learn({ color, title, children }: { color: string; title: string; children: ReactNode }) {
+function Learn({ color, title, children }: { color: string; title: ReactNode; children: ReactNode }) {
   return (
     <div className="panel p-5">
-      <div className="mb-2 flex items-center gap-2 font-display text-sm font-semibold text-white">
+      <div className="mb-2 flex items-center gap-2 font-display text-lg font-bold uppercase tracking-wide text-white">
         <span className="h-3 w-3 rounded-full" style={{ background: color, boxShadow: `0 0 12px ${color}` }} />
         {title}
       </div>
@@ -541,17 +556,10 @@ function Learn({ color, title, children }: { color: string; title: string; child
 
 function Logo() {
   return (
-    <div className="grid h-11 w-11 place-items-center rounded-2xl border border-white/10 bg-lab-850 shadow-panel">
-      <svg viewBox="0 0 32 32" className="h-7 w-7" aria-hidden>
-        <defs>
-          <linearGradient id="lg" x1="0" x2="1">
-            <stop offset="0" stopColor="#e8401c" />
-            <stop offset=".5" stopColor="#4cb848" />
-            <stop offset="1" stopColor="#5a3a99" />
-          </linearGradient>
-        </defs>
-        <path d="M10 5h12M12 5v7l-5 12a2 2 0 0 0 2 3h14a2 2 0 0 0 2-3l-5-12V5" fill="none" stroke="#c5d0ef" strokeWidth="1.6" strokeLinejoin="round" />
-        <path d="M9.2 19h13.6l2 4.6a1.4 1.4 0 0 1-1.3 2H8.5a1.4 1.4 0 0 1-1.3-2Z" fill="url(#lg)" />
+    <div className="grid aspect-square w-[68px] shrink-0 place-items-center bg-coral sm:w-[110px]">
+      <svg viewBox="0 0 32 32" className="h-[74%] w-[74%]" aria-hidden>
+        <path d="M10 5h12M12 5v7l-5 12a2 2 0 0 0 2 3h14a2 2 0 0 0 2-3l-5-12V5" fill="none" stroke="#232F5B" strokeWidth="2" strokeLinejoin="round" />
+        <path d="M9.2 19h13.6l2 4.6a1.4 1.4 0 0 1-1.3 2H8.5a1.4 1.4 0 0 1-1.3-2Z" fill="#232F5B" />
       </svg>
     </div>
   );

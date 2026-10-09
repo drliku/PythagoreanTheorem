@@ -20,6 +20,13 @@ An interactive 3D pH scale simulator for chemistry students, built with **React*
 - **Compare two** – two beakers side by side with their pH values, concentrations and the tenfold-per-unit ratio.
 - **Pause animation** and **Reset**.
 
+## Branding
+
+Styled after The Brain Maze logo: navy background scale built on `#232F5B`, coral `#F37367` accents, squared
+corners and a logo-style "pH SCALE — LAB" wordmark. Headings, buttons and labels use the **Brain** typeface
+(inlined at build time). Brain is capitals-only, so chemistry notation ("pH", [H⁺], mL, mol/L) stays in
+Saira Semi Condensed. Universal-indicator colours are unchanged.
+
 ## The model
 
 Ideal dilute aqueous solutions at 25 °C (Kw = 1.0 × 10⁻¹⁴). A solution is stored as its volume and its
